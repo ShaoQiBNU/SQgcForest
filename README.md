@@ -67,7 +67,7 @@ gcForest算法解读
 
 # 三. 应用
 
-> gcForest代码在可以https://github.com/kingfengji/gcForest和https://github.com/pylablanche/gcForest找到。前者是python2.7的版本，后者是3.0+版本，后者参数说明如下：
+> gcForest代码在可以https://github.com/kingfengji/gcForest. 、 https://github.com/pylablanche/gcForest. 和 https://www.jianshu.com/p/a8f7502357a3. 找到。https://github.com/kingfengji/gcForest. 是python2.7的版本， https://github.com/pylablanche/gcForest. 是3.0+版本，参数说明如下：
 
 ```
 shape_1X: int or tuple list or np.array (default=None)
