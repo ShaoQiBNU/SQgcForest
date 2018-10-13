@@ -19,7 +19,7 @@ gcForest算法解读
 
 > 将输入特征经过级联森林，输出新的类别概率向量，将新的类别概率向量链接输入特征作为下一层输入，经过多个级联森林（k-fold交叉验证用于避免过拟合，并决定是否添加级），输出最终类别概率向量。Cascade Forest结构如图所示：
 
-！！！！！！！！！！img1
+![image](https://github.com/ShaoQiBNU/SQgcForest/blob/master/images/1.png)
 
 > Cascade结构的每一级接收前一级处理的特征信息并将所得结果传输给下一级。每一级由两种类型的森林组成，其中蓝色表示random forests，黑色表示complete-random tree forests。
 
@@ -29,7 +29,7 @@ gcForest算法解读
 
 > 其中单个森林产生类别预测分布的过程如下：论文中是3分类，则Forest中的每个tree对x分类都会得到一个三维的类别概率向量，将所有结果取平均就得到最终的class vector，如图所示：
 
-！！！！！！！！！！img2
+![image](https://github.com/ShaoQiBNU/SQgcForest/blob/master/images/2.png)
 
 > 将同一级Forest产生的class vector连接就得到新的x（增强特征augmented feature），连接输入特征作为下一级Forest的输入向量。在Cascade的最后，将众多Forest产生的向量进行取平均，就产生了一个总的三维向量，哪个概率大，则x就属于哪一类。
 
@@ -41,7 +41,7 @@ gcForest算法解读
 
 > 深度神经网络在处理特征关系方面是强大的，例如，卷积神经网络对图像数据有效，其中原始像素之间的空间关系是关键的。递归神经网络对序列数据有效，其中顺序关系是关键的。受这种认识的启发，论文采用多粒度扫描流程来增强级联森林。通过使用多个尺寸的滑动窗口，最终的变换特征矢量将包括更多的特征。多粒度扫描就是将原始数据转化为输入向量格式。主要有两种类型：序列数据和图片数据，作用跟DNN类似。如图所示：
 
-！！！！！！！！！！img3
+![image](https://github.com/ShaoQiBNU/SQgcForest/blob/master/images/3.png)
 
 > 假设序列数据特征维度是400，特征窗口大小为100，滑动步长为1，则通过滑动特征窗口将会得到301个100维的向量。通过两个森林训练得到301个3维的向量，并且将得到的概率向量连接为转换后的输入向量。维度变化过程：
 
@@ -59,11 +59,11 @@ gcForest算法解读
 
 > gcForest的整体结构如图所示：第一阶段使用多个尺寸的滑动窗口得到不同尺度的的输出，级联在第二阶段的不同level层 。
 
-！！！！！！！！！！img4
+![image](https://github.com/ShaoQiBNU/SQgcForest/blob/master/images/4.png)
 
 > 也有另外一种级联方式，如图所示：第一阶段使用多个尺寸的滑动窗口得到不同尺度的的输出，然后连接到一起，整体级联在第二阶段的不同level层 。
 
-！！！！！！！！！！img5
+![image](https://github.com/ShaoQiBNU/SQgcForest/blob/master/images/5.png)
 
 # 三. 应用
 
