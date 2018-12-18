@@ -143,3 +143,19 @@ accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
 print('gcForest accuracy : {}'.format(accuracy))
 ```
 
+
+
+try:
+            basestring
+        except NameError:
+            basestring = str
+            
+            
+整除
+            
+的
+的问题
+
+
+配置文件的说明
+
