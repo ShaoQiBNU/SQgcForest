@@ -69,11 +69,39 @@ gcForest算法解读
 
 # 三. 应用
 
-> gcForest代码在可以https://github.com/kingfengji/gcForest. 、 https://github.com/pylablanche/gcForest. 和 https://www.jianshu.com/p/a8f7502357a3. 找到。https://github.com/kingfengji/gcForest. 是python2.7的版本， https://github.com/pylablanche/gcForest. 是3.0+版本，参数说明如下：
+> gcForest代码在可以https://github.com/kingfengji/gcForest. 、 https://github.com/pylablanche/gcForest. 和 https://www.jianshu.com/p/a8f7502357a3. 找到。其中：https://github.com/kingfengji/gcForest. 是python2.7的版本，https://github.com/pylablanche/gcForest. 是3.0+版本，使用方法如下：
+
+## (一) 2.7使用 
+
+> 根据官方demo，具体使用方法如下：
+
+
+配置文件的说明
+
+
+> 由于大部分python版本为3.0，所以可以对2.7版本进行修改，具体修改地方如下：
+
+
+### basestring的问题
+> python2.7存在basestring的用法，但是python3中改为了str，可通过下面方式修改：
+```python
+try:
+	basestring
+except NameError:
+	basestring = str
+```           
+gcForest-master/lib/gcforest/layers
+
+###           
+整除的问题
+
+## (二) 3.0使用
+
+> 参数如下：
 
 ```
 shape_1X: int or tuple list or np.array (default=None)
-    训练量样本的大小，格式为[n_lines, n_cols]，调用mg_scanning时需要！对于序列数据，可以给出单个int。
+    训练量样本的大小，格式为[n_lines, n_cols]，调用 mg_scanning 时需要！对于序列数据，可以给出单个int。
 
 n_mgsRFtree: int (default=30)
     多粒度扫描时构建随机森林使用的决策树数量.
@@ -110,7 +138,7 @@ n_jobs: int (default=1)
     随机森林并行运行的工作数量。如果为-1，则设置为cpu核心数.
 ```
 
-> 具体应用见上面两个链接，应用gcForest实现MNIST判别，代码如下：
+> 应用gcForest实现MNIST判别，代码如下：
 
 ```python
 '''
@@ -142,20 +170,3 @@ y_pred = gcf.predict(X_test)
 accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
 print('gcForest accuracy : {}'.format(accuracy))
 ```
-
-
-
-try:
-            basestring
-        except NameError:
-            basestring = str
-            
-            
-整除
-            
-的
-的问题
-
-
-配置文件的说明
-
