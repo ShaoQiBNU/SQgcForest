@@ -73,12 +73,7 @@ gcForest算法解读
 
 ## (一) 2.7使用 
 
-> 根据官方demo，具体使用方法如下：
-
-
-配置文件的说明
-
-> 由于大部分python版本为3.0，所以可以对2.7版本进行修改，具体修改地方如下：
+> 根据官方demo，具体使用方法见 https://github.com/kingfengji/gcForest. 由于大部分python版本为3.0，所以可以对2.7版本进行修改，具体修改地方如下：
 
 ### basestring的问题
 
