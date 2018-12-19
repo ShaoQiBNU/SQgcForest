@@ -102,11 +102,8 @@ except NameError:
 gcForest-master/lib/gcforest/layers/fg_pool_layer.py    
 self.pool_method = self.get_value("pool_method", "avg", str)
 
-
 gcForest-master/lib/gcforest/data_cache.py              
 assert isinstance(data_name, str), "data_name={}, type(data_name)={}".format(data_name, type(data_name))
-
-
 ```
 
 ### 整除的问题
