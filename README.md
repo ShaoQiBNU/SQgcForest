@@ -78,22 +78,48 @@ gcForest算法解读
 
 配置文件的说明
 
-
 > 由于大部分python版本为3.0，所以可以对2.7版本进行修改，具体修改地方如下：
 
-
 ### basestring的问题
+
 > python2.7存在basestring的用法，但是python3中改为了str，可通过下面方式修改：
+
 ```python
+
 try:
 	basestring
 except NameError:
 	basestring = str
-```           
-gcForest-master/lib/gcforest/layers
 
-###           
-整除的问题
+或者
+
+直接将 basestring 改为 str
+```           
+
+> 存在basestring主要文件如下：
+
+```
+gcForest-master/lib/gcforest/layers/fg_pool_layer.py    
+self.pool_method = self.get_value("pool_method", "avg", str)
+
+
+gcForest-master/lib/gcforest/data_cache.py              
+assert isinstance(data_name, str), "data_name={}, type(data_name)={}".format(data_name, type(data_name))
+
+
+```
+
+### 整除的问题
+
+> python2.7的'/'代表整除，而python3的'//'代表整除，需要将涉及到'/'改为'//'，主要文件如下：
+
+```
+gcForest-master/lib/gcforest/utils/win_utils.py
+di = des_id // win_x % win_y
+k = des_id // win_x // win_y
+nh = (h - win_y) // stride_y + 1
+nw = (w - win_x) // stride_x + 1
+```
 
 ## (二) 3.0使用
 
